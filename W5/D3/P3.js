@@ -2,7 +2,7 @@
 
 function loadCustomerProfile(){
     return new Promise(function(resolve,reject){
-        const isServiceAvailable = t;
+        const isServiceAvailable = true;//false
 
         if(isServiceAvailable){
             resolve("Success! Customer profile loaded.");
