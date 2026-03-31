@@ -2,9 +2,14 @@
 const express = require("express");
 
 const app = express();
-
 app.get("/users",function(req,res){
-    res.send("Returning all users");
+res.status(200).json([{
+        message:"successfull."},
+        {id:1,name:"shalini"},
+        {id:1,name:"bipin"},
+        {id:1,name:"kr"},
+        ]);
+        res.send("Returning all users");
 });
 
 //To create
