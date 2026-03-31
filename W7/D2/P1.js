@@ -1,4 +1,4 @@
-// Routing
+// Routing: Nested routes
 // "/" base url
 // "/api/users"
 
@@ -30,3 +30,32 @@ app.use("/api",apiRouter);
 app.listen(4000,function(){
     console.log("Express server running at http://localhost:4000");
 });
+
+//***New router***
+//products router (handles /api/products/...)
+const productRouter = express.Router();
+
+// /api/products       -> create product
+productRouter.post("/",(req,res) => {
+    res.json({
+        route: "/api/products",
+        message: "create products"
+    });
+});
+
+// /api/products/:id     -> delete product
+productRouter.delete("/:id",(req,res) => {
+    res.json({
+        route: `/api/products/${req.params.id}`,
+        message: "Delete product"
+    });
+});
+
+// mount products router under /api/products
+apiRouter.use("/products",productRouter);
+
+app.listen(4000,function(){
+    console.log("Express server running at http://localhost:4000");
+});
+//curl -X DELETE http://localhost:4000/api/products/123
+//curl -X POST http://localhost:4000/api/products -H "Content-Type: application/json" -d "{"name":"pen","price":10}"
