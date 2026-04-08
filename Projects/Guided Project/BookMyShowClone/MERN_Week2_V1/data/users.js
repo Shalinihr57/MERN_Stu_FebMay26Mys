@@ -1,0 +1,19 @@
+// User's details of the application
+const uesrs = [
+    {
+        id:1,
+        name:"Shalini",
+        email:"u@e.com",
+        password:"mahi123",
+        role:"user"
+    },
+    {
+        id:2,
+        name:"Admin",
+        email:"a@e.com",
+        password:"admi123",
+        role:"admin"
+    }
+]
+
+module.exports = uesrs;
