@@ -16,4 +16,4 @@ const uesrs = [
     }
 ]
 
-module.exports = uesrs;
+module.exports = users;
