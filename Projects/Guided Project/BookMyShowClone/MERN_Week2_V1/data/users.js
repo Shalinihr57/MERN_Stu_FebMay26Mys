@@ -1,5 +1,5 @@
 // User's details of the application
-const uesrs = [
+const users = [
     {
         id:1,
         name:"Shalini",
