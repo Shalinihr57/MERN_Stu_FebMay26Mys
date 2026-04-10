@@ -43,15 +43,15 @@ async function runCrudDemo(){
 
         //Update using findByIdAndUpdate()
         const updatedStudent = await Student.findByIdAndUpdate(
-            secondStudent._id,
+            {_id:"69d87ec17789c643e5e57865"},
             {age:19},
             {new:true}
-        );
+    );
         console.log("Updated with findByIdAndUpdate():",updatedStudent);
 
         //Delete using findByIdAndDelete()
         const deletedStudent = await Student.findByIdAndDelete(firstStudent._id);
-        console.log("Deleted with findByIdAndDelete():",deletedStudent);
+        // console.log("Deleted with findByIdAndDelete():",deletedStudent);
 
         await mongoose.connection.close();
         console.log("connection closed");
