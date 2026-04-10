@@ -58,7 +58,7 @@ function logoutUser(req,res,next){
     try{
         req.session.destroy(()=>{
             res.clearCookie("token");
-            req.status(200).json({
+            res.status(200).json({
                 success:true,
                 message:"Logout Successful"
             });
