@@ -69,6 +69,6 @@ exports.loginUser = async({email,password})=>{
         token,
         user:{id:user._id,
                 role:user.role,
-        }
-    }
-}
+        },
+    };
+};
