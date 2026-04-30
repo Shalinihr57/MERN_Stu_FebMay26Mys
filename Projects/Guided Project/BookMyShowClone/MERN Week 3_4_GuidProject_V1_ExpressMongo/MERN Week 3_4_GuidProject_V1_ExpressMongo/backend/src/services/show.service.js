@@ -1,6 +1,6 @@
 const Show = require("../models/Show");
 const Movie = require("../models/Movie");
-
+const CustomError = require("../utils/customError");
 // Generate Seats
 const generateSeats = (totalSeats) =>{
     const seats = [];
@@ -24,7 +24,7 @@ exports.createShow = async ({movieId,date,time,totalSeats}) => {
     // check if movie exists
     const movie = await Movie.findById(movieId);
     if(!movie)
-        throw new Error("Movie not found");;
+        throw new CustomError("Movie not found",404);
 
     // Generate seats
     const seats = generateSeats(totalSeats);
@@ -58,7 +58,7 @@ exports.getShows = async ({movieId,date}) => {
 exports.getShowById = async (id) => {
     const show = await Show.findById(id).populate("movieId");
     if(!show)
-        throw new Error("Show not found");
+        throw new CustomError("Show not found",404);
 
     return show;        
 };
@@ -70,7 +70,7 @@ exports.updateShow = async(id,data)=>{
         runValidators:true,
     });
     if(!show)
-        throw new Error("Show not found");
+        throw new CustomError("Show not found",404);
 
     return show;  
 };
@@ -81,5 +81,5 @@ exports.deleteShow = async(id)=>{
         isActive:false,
     });
     if(!show)
-        throw new Error("Show not found");
+        throw new CustomError("Show not found",404);
 };
