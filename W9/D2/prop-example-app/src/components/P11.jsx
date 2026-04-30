@@ -15,7 +15,7 @@ Profile.propTypes = {
 export function PropTypesDemo() {
     return(
         <>
-            <Profile name="Rakesh" age={21} />
+            <Profile name="shalini" age={21} />
         </>
     );
 }
