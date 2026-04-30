@@ -19,7 +19,7 @@ const GreetingWithBorder = WithBorder(Greeting);
 export function HOCExample(){
     return(
         <>
-            <GreetingWithBorder name="Rakesh"/>
+            <GreetingWithBorder name="shalini"/>
         </>
     )
 }
