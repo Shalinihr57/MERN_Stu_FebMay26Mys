@@ -4,7 +4,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 const loggerMiddleware = require("./middleware/loggerMiddleware");
-const errorMiddleware = require("./src/middleware/error.middleware");
+const errorMiddleware = require("./middleware/errorMiddleware");
+
 const movieRoutes = require("./routes/movieRoutes");
 const authRoutes = require("./routes/authRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
