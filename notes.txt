@@ -8,3 +8,4 @@ https://www.notion.so/4-5-26-35681ee8a8078048aed1f4ceb65229ab?source=copy_link
 https://www.notion.so/strict-rules-of-JSX-Syntax-36b81ee8a80780e4bdbec58fdfdf554c?source=copy_link
 https://www.notion.so/13-5-26-36b81ee8a80780b5910bfdea4197654c?source=copy_link
 https://www.notion.so/controlled-vs-uncontrolled-components-36b81ee8a80780b4bbbbec73aed44562?source=copy_link
+https://www.notion.so/strict-rules-of-JSX-Syntax-36b81ee8a80780e4bdbec58fdfdf554c?source=copy_link
