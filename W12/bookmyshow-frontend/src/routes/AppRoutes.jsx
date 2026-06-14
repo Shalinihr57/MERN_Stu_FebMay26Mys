@@ -237,9 +237,7 @@ export default function AppRoutes() {
               <Bookings />
             </ProtectedRoute>
           }
-        >
-          <Route path="/bookings" element={<Bookings />} />
-        </Route>
+        />
 
         {/*
         =================================================
@@ -259,7 +257,7 @@ export default function AppRoutes() {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute requiredRole="admin">
+            <ProtectedRoute roles={["admin"]}>
               <AdminLayout />
             </ProtectedRoute>
           }
