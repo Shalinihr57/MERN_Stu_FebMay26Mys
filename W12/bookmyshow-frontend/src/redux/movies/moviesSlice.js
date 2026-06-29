@@ -1,118 +1,46 @@
-// src/redux/movies/moviesSlice.js
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getMovies } from "../../api/movie.api";
 
-/*
-=========================================================
-SPRINT 3 – MOVIES SLICE (FOUNDATION)
-
-
-TOPICS COVERED:
-
-
-✓ createSlice
-✓ Initial State
-✓ Feature-Based State
-
-
-WHY THIS FILE?
-
-
-Redux organizes state into slices.
-
-
-This slice owns everything related
-to movie discovery.
-
-
-Future Responsibilities:
-
-
-✓ Movie List
-✓ Loading State
-✓ Errors
-✓ Pagination
-✓ Filters
-
-
-=========================================================
-*/
-
-import { createSlice } from "@reduxjs/toolkit";
-
-/*
-=========================================================
-INITIAL STATE
-
-
-Movies data arrives in later steps.
-
-
-=========================================================
-*/
+export const fetchMovies = createAsyncThunk(
+  "movies/fetchMovies",
+  async (filters, thunkAPI) => {
+    try {
+      return await getMovies(filters);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || "Failed to fetch movies"
+      );
+    }
+  }
+);
 
 const initialState = {
   movies: [],
-
+  pagination: { page: 1, limit: 5, total: 0 },
   loading: false,
-
   error: null,
-
-  pagination: null,
 };
-
-/*
-=========================================================
-MOVIES SLICE
-
-
-No reducers yet.
-
-
-Async reducers arrive when we
-integrate APIs.
-
-
-=========================================================
-*/
 
 const moviesSlice = createSlice({
   name: "movies",
-
   initialState,
-
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchMovies.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchMovies.fulfilled, (state, action) => {
+        state.loading = false;
+        state.movies = action.payload.data.movies;
+        state.pagination = action.payload.data.pagination;
+      })
+      .addCase(fetchMovies.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export default moviesSlice.reducer;
-
-/*
-=========================================================
-STATE SHAPE
-
-
-movies
-↓
-movies[]
-loading
-error
-pagination
-
-
-=========================================================
-
-
-KEY TAKEAWAYS
-
-
-1. Slices own a feature.
-
-
-2. Initial state defines the
-   contract.
-
-
-3. Async behavior is introduced
-   progressively.
-
-
-=========================================================
-*/
